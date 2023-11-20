@@ -1,0 +1,24 @@
+List of products
+|__	products
+	|__	"product_id"
+	|__	"product_name"
+	|__	"first_available"
+	|__	"product_attributes"
+	|	|__	"product_attribute_1"
+	|	|__	"product_attribute_2"
+	|	|__	...
+	|__	"variant"
+	|	|__	"variant_1"
+	|	|	|__	"variant_1_attribute"
+	|	|	|	|__	"variant_1_attribute_1"
+	|	|	|	|__	"variant_1_attribute_2"
+	|	|	|	|__	...
+	|	|	|__	"variant_1_image"
+	|	|__	"varriant_2"
+	|	|	|__	"variant_2_attribute"
+	|	|	|	|__	"variant_2_attribute_1"
+	|	|	|	|__	"variant_2_attribute_2"
+	|	|	|	|__	...
+	|	|	|__	"variant_2_image"
+	|	|__	...
+	|__	"product_image"

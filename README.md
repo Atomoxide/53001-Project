@@ -1,8 +1,6 @@
 # 53001-Project
 
-## Initial Draft (11-18-2023)
-
-Hybrid DB design with MySQL, MongoDB, and RedisDB
+## Hybrid Databse Design Structure
 
 ### MySQL for:
 * user management
@@ -20,11 +18,23 @@ Hybrid DB design with MySQL, MongoDB, and RedisDB
 * product image links
 
 ### RedisDB for:
-* shopping cart
 * session management
+* shopping cart
 * user browsing history
+* user searching history
 
-## Revision 1 (11-19-2023)
+
+## Revision History
+
+### Initial Draft (11-18-2023)
+
+Hybrid DB design with MySQL, MongoDB, and RedisDB
+
+
+### Revision 1 (11-19-2023)
 
 * Add product_variant entity in MySQL DB and MongoDB. Instead of using different product id for the same product with different
 size, color, etc., adding a product_variant help reduce the data size and minimize redundant data
+
+### Revision 2 (11-20-2023)
+* Updated RedisDB part to use separate buckets for shopping cart, browsing history, browsing history timer, and searching history

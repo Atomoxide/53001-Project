@@ -1,0 +1,66 @@
+[
+    {
+        "product_id": 1,
+        "product_name": "HyperSound Wireless Headphone",
+        "first_available": "2023-01-01",
+        "property": {
+			"battery_life": 24,
+			"connectivity": ["Bluetooth", "USB Type-C"],
+			"weight": 5.5,
+			"weight_unit": "ounce"
+			},
+        "image": [
+			"https://image_url/product_id_1/front",
+			"https://image_url/product_id_1/back"
+			]
+    },
+	
+    {
+        "product_id": 2,
+        "product_name": "Breeze Sunny Skirt",
+        "first_available": "2023-05-05",
+    	"product_variant": {
+			"size L/color cream": {                    
+				"property": {
+					"size": "L",
+					"material": "78% nylon,22% spandex",
+					"color": "cream"
+					},
+				"image": [
+					"https://image_url/product_id_2/l_cream/front",
+					"https://image_url/product_id_2/l_cream/back"
+					]
+				},
+			"size L/color pink": "...",
+			"size XL/color cream": "..."
+			}
+
+    },
+	
+	{
+		"product_id": 3,
+		"product_name": "Nordic Style Vase",
+		"first_available": "2019-03-04",
+		"product_variant": {
+			"color white": {                    
+				"property": {
+					"color": "white",
+					"dimension": [3, 3, 5.9],
+					"dimension_unit": ["inch", "inch", "inch"],
+					"material": "ceramic",
+					"weight": 9.1,
+					"weight_unit": "ounce"
+					},
+				"image": [
+					"https://image_url/product_id_2/white/front",
+					"https://image_url/product_id_2/white/back"
+					]
+				},
+			"cream": "...",
+			"coffee": "..."
+			}
+	}
+	
+    
+]
+
