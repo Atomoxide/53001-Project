@@ -2,6 +2,8 @@
 
 ## Hybrid Databse Design Structure
 
+![alt text](https://github.com/Atomoxide/53001-Project/blob/main/structure%20diagram.png)
+
 ### MySQL for:
 * user management
 * product stock
