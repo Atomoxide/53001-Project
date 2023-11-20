@@ -1,6 +1,6 @@
 # 53001-Project
 
-## Initial Draft 11-18-2023
+## Initial Draft (11-18-2023)
 
 Hybrid DB design with MySQL, MongoDB, and RedisDB
 
@@ -24,7 +24,7 @@ Hybrid DB design with MySQL, MongoDB, and RedisDB
 * session management
 * user browsing history
 
-## Revision 1 11-19-2023
+## Revision 1 (11-19-2023)
 
 * Add product_variant entity in MySQL DB and MongoDB. Instead of using different product id for the same product with different
 size, color, etc., adding a product_variant help reduce the data size and minimize redundant data
