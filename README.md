@@ -43,9 +43,15 @@ size, color, etc., adding a product_variant help reduce the data size and minimi
 
 ### Revision 3 (11-21-2023)
 * Update Return table from SQL DB
-** add order_id foreign key to associate return with certain order
-** add product_variant_id foreign key to associate return with certain product
+  - add order_id foreign key to associate return with certain order
+  - add product_variant_id foreign key to associate return with certain product
 * Update field names in multiple tables to keep consistant
 * Add shipping_method table
 * change table name "order" to "customer_order" to prevent naming conflict with MySQL command
 * change table name "return" to "order_return" to prevent naming conflict with MySQL command
+
+### Revision 4 (11-22-2023)
+* Update Product collection from Document Database
+  - add product variant id
+  - move general attributes out from variant attributes
+* re-formate structure diagram
