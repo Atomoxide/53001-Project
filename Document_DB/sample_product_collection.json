@@ -1,0 +1,154 @@
+{
+	"product_id": "1",
+	"product_name": "Bts Studio Pro",
+	"first_available": {
+		"$date": "2023-01-01T00:00:00.000Z"
+	},
+	"property": {
+		"battery_life": {
+			"number": {
+				"$numberDecimal": "40"
+			},
+			"unit": "hour"
+		},
+		"connectivity": [
+			"Bluetooth",
+			"Wireless",
+			"USB Type-C",
+			"3.5 mm"
+		],
+		"weight": {
+			"number": {
+				"$numberDecimal": "0.26"
+			},
+			"unit": "kilogram"
+		}
+	},
+	"description": "Wireless Bluetooth Noise Cancelling Headphones - Personalized Spatial Audio, USB-C Lossless Audio, Apple & Android Compatibility, Up to 40 Hours Battery Life",
+	"image": [
+		"https://image_url/product_id_1/front",
+		"https://image_url/product_id_1/back"
+	]
+}
+
+{
+	"product_id": "2",
+	"product_name": "Floral Print Flowy A Line Maxi Dress",
+	"first_available": {
+		"$date": "2022-12-05T00:00:00.000Z"
+	},
+	"property": {
+		"material": "95% Polyester, 5% Elastane",
+		"closure_type": "pull on",
+		"care_instruction": "machine wash"
+	},
+	"variant": [
+		{
+			"variant_id": "1",
+			"property": {
+				"size": "M",
+				"color": "greygreen"
+			},
+			"image": [
+				"https://image_url/product_id_2/variant_id_1/front",
+				"https://image_url/product_id_2/variant_id_1/back"
+			]
+		},
+		{
+			"variant_id": "2",
+			"property": {
+				"size": "L",
+				"color": "greygreen"
+			},
+			"image": [
+				"https://image_url/product_id_2/variant_id_2/front",
+				"https://image_url/product_id_2/variant_id_2/back"
+			]
+		},
+		{
+			"variant_id": "3",
+			"property": {
+				"size": "M",
+				"color": "brightpink"
+			},
+			"image": [
+				"https://image_url/product_id_2/variant_id_3/front",
+				"https://image_url/product_id_2/variant_id_3/back"
+			]
+		},
+		{
+			"variant_id": "4",
+			"property": {
+				"size": "L",
+				"color": "brightpink"
+			},
+			"image": [
+				"https://image_url/product_id_2/variant_id_4/front",
+				"https://image_url/product_id_2/variant_id_4/back"
+			]
+		}
+	],
+	"description": "This Floral Print Maxi Dress is Made of Skin Friendly Fabric, Flowy And Lightweight, Soft Breathable to Wear All Day Long."
+}
+
+{
+	"product_id": "3",
+	"product_name": "Nordic Heart Shaped Vase",
+	"first_available": {
+		"$date": "2023-08-10T00:00:00.000Z"
+	},
+	"property": {
+		"dimension": {
+			"length": {
+				"$numberDecimal": "6.3"
+			},
+			"width": {
+				"$numberDecimal": "6.3"
+			},
+			"Height": {
+				"$numberDecimal": "8.3"
+			},
+			"unit": "inch"
+		},
+		"weight": {
+			"number": {
+				"$numberDecimal": "2.23"
+			},
+			"unit": "pound"
+		},
+		"material": "ceramic"
+	},
+	"variant": [
+		{
+			"variant_id": "1",
+			"property": {
+				"color": "white"
+			},
+			"image": [
+				"https://image_url/product_id_3/variant_1/front",
+				"https://image_url/product_id_3/variant_1/back"
+			]
+		},
+		{
+			"variant_id": "2",
+			"property": {
+				"color": "brown"
+			},
+			"image": [
+				"https://image_url/product_id_3/variant_2/front",
+				"https://image_url/product_id_3/variant_2/back"
+			]
+		},
+		{
+			"variant_id": "3",
+			"property": {
+				"color": "cream"
+			},
+			"image": [
+				"https://image_url/product_id_3/variant_3/front",
+				"https://image_url/product_id_3/variant_3/back"
+			]
+		}
+	],
+	"description": "The ceramic vases are designed with a unique hollow heart shape. When placed together, they look like a romantic couple hugging each other tightly. When placed separately, they can add two beautiful scenery to your room, which is cute and interesting."
+}

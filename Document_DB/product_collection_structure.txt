@@ -1,4 +1,4 @@
-List of products
+collection: products
 |__	products
 	|__	"product_id"
 	|__	"product_name"
@@ -7,18 +7,21 @@ List of products
 	|	|__	"product_attribute_1"
 	|	|__	"product_attribute_2"
 	|	|__	...
-	|__	"variant"
+	|__	"variant" (optional)
 	|	|__	"variant_1"
+	|	|	|__ "variant_id"
 	|	|	|__	"variant_1_attribute"
 	|	|	|	|__	"variant_1_attribute_1"
 	|	|	|	|__	"variant_1_attribute_2"
 	|	|	|	|__	...
 	|	|	|__	"variant_1_image"
 	|	|__	"varriant_2"
+	|	|	|__ "variant_id"
 	|	|	|__	"variant_2_attribute"
 	|	|	|	|__	"variant_2_attribute_1"
 	|	|	|	|__	"variant_2_attribute_2"
 	|	|	|	|__	...
 	|	|	|__	"variant_2_image"
 	|	|__	...
-	|__	"product_image"
+	|__ "description"
+	|__	"image"
