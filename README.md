@@ -55,3 +55,7 @@ size, color, etc., adding a product_variant help reduce the data size and minimi
   - add product variant id
   - move general attributes out from variant attributes
 * re-formate structure diagram
+
+### Revision 5 (11-29-2023)
+* Update RedisDB bucket names
+* Update RedisDB code

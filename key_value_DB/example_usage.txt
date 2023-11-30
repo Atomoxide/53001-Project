@@ -1,0 +1,56 @@
+-- Example: session bucket.
+-- bucket name: session:[session_id]. In this example use session_id = 1
+-- bucket data:
+--     session_id = 1
+--     user_name = "JohnDoe"
+--     cart_count = 3 (number of items in cart)
+--     cart_hashes_key = 1 (refer to the name of cart bucket)
+--     browse_history_key = 1 (refer to the browse_history bucket)
+--     browse_time_key = 1 (refer to the browse_time bucket)
+--     search_history_key = 1 (refer to the search_history bucket)
+--     activity_log = "signed out"
+HMSET session:1 session_id 1 user_name "JohnDoe" cart_count 3 cart_hashes_key 1 browse_histroy_key 1 browse_time_key 1 search_history_key 1 activity_log "signed out"
+
+-- bucket name: cart:[cart_hashes_key]. In this example cart_hashes_key = 1
+-- bucket data:
+--      cart_item_X: Xth product's product_id
+--      quantity_item_X: quantity of Xth product in the cart
+HMSET cart:1 cart_item_1 1 quantity_item_1 1 cart_item_2 2 quantity_item_2 1
+
+-- bucket name: browse_history:[browse_history_key]. In this example browse_history_key = 1
+-- bucket data: FIFO queue of product id that the customer browsed
+-- In this example, assume the max length of the queue is 3
+-- adding browse_history to the queue. The customer accessed product id 1453, 530, 1806
+LPUSH browse_history:1 1453
+LPUSH browse_history:1 530
+LPUSH browse_history:1 1806
+-- the customer assess product 476, remove the first item in the queue and add product 476
+RPOP browse_history:1
+LPUSH browse_history:1 476
+
+-- bucket name: browse_time:[browse_time_key]. In this example browse_time_key = 1
+-- bucket data: FIFO queue of time in seconds that the customer stayed on the product with respect to the product in corresponding browse_history:[browse_history_key] (in the session bucket)
+-- In this example, assume the max length of the queue is 3
+-- adding browse_history to the queue. The customer stayed on product 1453, 530, and 1806 for 3 minutes, 4 minutes, and 3.5 minutes, respectively.
+LPUSH browse_time:1 180
+LPUSH browse_time:1 240
+LPUSH browse_time:1 210
+-- the customer assessed product 476, and stayed for 6 minutes there
+RPOP browse_time:1
+LPUSH browse_time:1 360
+
+-- bucket name: search_history:[search_history_key]. In this example search_history_key = 1
+-- bucket data: FIFO queue of product id that the customer searched for
+-- In this example, assume the max length of the queue is 3
+-- adding search history to the queue. The customer searched for product id 1618, 1914, 1939
+LPUSH search_history:1 1618
+LPUSH search_history:1 1914
+LPUSH search_history:1 1939
+-- the customer searched product 1991, remove the first item in the queue and add product 1991
+RPOP search_history:1
+LPUSH search_history:1 1991
+
+
+-- run the other file (example.redisCMD) as
+--              ./redis-cli < temp.example.redisCMD
+-- on the terminal to test this example

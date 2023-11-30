@@ -1,0 +1,22 @@
+HMSET session:1 session_id 1 user_name "JohnDoe" cart_count 3 cart_hashes_key 1 browse_histroy_key 1 browse_time_key 1 search_history_key 1 activity_log "signed out"
+
+HMSET cart:1 cart_item_1 1 quantity_item_1 1 cart_item_2 2 quantity_item_2 1
+
+
+LPUSH browse_history:1 1453
+LPUSH browse_history:1 530
+LPUSH browse_history:1 1806
+RPOP browse_history:1
+LPUSH browse_history:1 476
+
+LPUSH browse_time:1 180
+LPUSH browse_time:1 240
+LPUSH browse_time:1 210
+RPOP browse_time:1
+LPUSH browse_time:1 360
+
+LPUSH search_history:1 1618
+LPUSH search_history:1 1914
+LPUSH search_history:1 1939
+RPOP search_history:1
+LPUSH search_history:1 1991
