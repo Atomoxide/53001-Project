@@ -3,8 +3,11 @@
 ## Name and CNetID
 
 Name: Ziyang Yuan
+
 Group: 17
+
 CNetID: ziyangy
+
 Email: ziyangy@uchicago.edu
 
 This project is completed solely by Ziyang.
