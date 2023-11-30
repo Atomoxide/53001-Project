@@ -92,7 +92,7 @@ This project is completed solely by Ziyang.
 
 ## Document Database: MongoDB
 
-### Database and Sample data document:
+### Database and Example data document:
 json data file and explanatory text can be found at [https://github.com/Atomoxide/53001-Project/tree/main/Document_DB](https://github.com/Atomoxide/53001-Project/tree/main/Document_DB)
 
 ### Collection: products
@@ -136,7 +136,15 @@ collection: products
 	- variant_image is a list of image URI for specific variant
 * "description": text description of the product
 * "image": a list of image URI for the product
-* **Check out the sample json data file linked above to see an actual instance**
+* **Check out the example json data file linked above to see an actual instance**
+
+
+## Key-stored Database: RedisDB
+
+### Example Data Bucket and Usage file
+* The example data bucket (filed script) and its explanatory usage text file can be found at: [https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB](https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB)
+
+  
 
 ## Acknowledgement
 This project is completed with the assistance of ChatGPT 3.5:
