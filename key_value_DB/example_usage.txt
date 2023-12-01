@@ -40,15 +40,15 @@ RPOP browse_time:1
 LPUSH browse_time:1 360
 
 -- bucket name: search_history:[search_history_key]. In this example search_history_key = 1
--- bucket data: FIFO queue of product id that the customer searched for
+-- bucket data: FIFO queue of key words that the customer searched for
 -- In this example, assume the max length of the queue is 3
--- adding search history to the queue. The customer searched for product id 1618, 1914, 1939
-LPUSH search_history:1 1618
-LPUSH search_history:1 1914
-LPUSH search_history:1 1939
--- the customer searched product 1991, remove the first item in the queue and add product 1991
+-- adding search history to the queue. The customer searched for key words "headphone", "summer dress", "vase"
+LPUSH search_history:1 "headphone"
+LPUSH search_history:1 "summer dress"
+LPUSH search_history:1 "vase"
+-- the customer searched the key word "laptop", remove the first item in the queue and add "laptop"
 RPOP search_history:1
-LPUSH search_history:1 1991
+LPUSH search_history:1 "laptop"
 
 
 -- run the other file (example.redisCMD) as

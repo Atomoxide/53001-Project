@@ -230,3 +230,52 @@ CREATE TABLE order_return
     CONSTRAINT FOREIGN KEY (order_id) REFERENCES customer_order (order_id),
     CONSTRAINT FOREIGN KEY (product_variant_id) REFERENCES product_variant (product_variant_id)
 );
+
+CREATE TRIGGER update_email
+    BEFORE UPDATE
+    ON email
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;
+
+
+CREATE TRIGGER update_stock
+    BEFORE UPDATE
+    ON stock
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;
+
+CREATE TRIGGER update_city
+    BEFORE UPDATE
+    ON city
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;
+
+CREATE TRIGGER update_company
+    BEFORE UPDATE
+    ON company
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;
+
+CREATE TRIGGER update_phone_number
+    BEFORE UPDATE
+    ON phone_number
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;
+
+CREATE TRIGGER update_shipment
+    BEFORE UPDATE
+    ON shipment
+    FOR EACH ROW
+BEGIN
+    SET NEW.last_update = NOW();
+END;

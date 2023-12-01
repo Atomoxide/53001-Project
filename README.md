@@ -41,6 +41,7 @@ This project is completed solely by Ziyang.
 
 ### Schema
 * Schema script can be found at [https://github.com/Atomoxide/53001-Project/blob/main/SQL/sql_schema.sql](https://github.com/Atomoxide/53001-Project/blob/main/SQL/sql_schema.sql)
+* The script contains **MySQL code for all tables and triggers**
 
 ### Table: Product, Product_variant, Product_stock, Stock
 * Product table keep track of each product and its brand, retailer, manufacturer, and category. The product_id is shared with corresponding fields in RedisDB and MongoDB.
@@ -82,8 +83,10 @@ This project is completed solely by Ziyang.
 * tracking stores all possible status of a shipment, such as shipped, arrive at facility, in transit, out for delivery, delivered, delayed, canceled, etc. and their descriptions.
 * shipment_method stores all possible shipment methods, such as express, ground, over-night, etc. It also stores the shipment company (as a foreign key to company table), base rate, and rate per 100 km for each method.
 
+### Trigger: update_stock, update_city, update_company, update_email, update_phone_number, update_shipment
+* each trigger updates the "last_update" field in the corresponding table. "last_update" is a datetime to record when was the last time the table got updated.
  
-### Benefit of Relational DB
+### Benefit and reason of using Relational DB
 * All data in the above field are stored in relational database to ensure ACID compliance (Atomicity, Consistency, Isolation, Durability), maintaining data integrity. Because all of these are critical data of the routine operation and they are not frequently accessed, the data integrity is more important than query speed.
 * Due to the importance of data integrety, backup and recovery is easier for relational db.
 * Scalability is another consideration. Relational databases can handle significant amounts of data and can scale effectively as the e-commerce website grows, in which case the amount of users, products, companies, addresses, phones, emails, etc. can expand very quickly.
@@ -138,11 +141,15 @@ collection: products
 * "image": a list of image URI for the product
 * **Check out the example json data file linked above to see an actual instance**
 
+### Benefit and Reason of using Document DB
+* The attributes of each item in the collection can be different, offerring the flexibility to handle various product from different category
+* Easy to handle structured data, semi-structured data, and unstrucutured data.
 
 ## Key-value Database: RedisDB
 
 ### Example Data Bucket and Usage file
 * The example data bucket (filed script) and its explanatory usage text file can be found at: [https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB](https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB)
+* **Check out the example to see an actual instance**
 
 ### Bucket: session:[session_id]
 * named with session_id
@@ -163,7 +170,21 @@ collection: products
 	- quantity_item_X: the quantity of Xth item
 * When adding a new item to this hash, server will lookup for cart count in the session bucket and creat a pair of new keys named as cart_item_[cart_count+1] and quantity_item_[cart_count+1]
 
-### 
+### Bucket: browse_history:[browse_history_key]
+* named with browse_history_key
+* A list as FIFO queue of product id that the customer browsed
+
+### Bucket: browse_time:[browse_time_key]
+* named with browse_time_key
+* A list as FIFO queue of the time spent (in seconds) that the customer stayed with respect to the product in corresponding browse_history:[browse_history_key] (in the session bucket)
+
+### Bucket: search_history:[search_history_key]
+* named with search_history_key
+* A list as FIFO queue of key words that the customer searched for
+
+### Benefit and Reason of using Key-value In-memory DB:
+* caching data is very quick, providing extremely fast read/write operations, which can significantly improve the shopping experience.
+* The session information, as well as the cart, browsing history, and search history need to be updated very frequently throughout the shopping experience of the users. Using in-memory database ensures the read/write efficiency and guarantees the smooth shopping experince.
 
 
 ## Acknowledgement
@@ -206,3 +227,7 @@ size, color, etc., adding a product_variant help reduce the data size and minimi
 ### Revision 5 (11-29-2023)
 * Update RedisDB bucket names. Now each bucket name is using colons [:] to specify keys
 * Update RedisDB code: example_usage.txt to specify the purpose and usage of example.rediscmd
+
+### Revision 6 (12-01-2023)
+* Update search_history bucket of RedisDB to store key words instead of product_id, because the search of the user might associate with multiple products or zero product.
+* Add triggers to update "last_update" field in some tables in the relational db.
