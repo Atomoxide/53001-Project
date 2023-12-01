@@ -14,6 +14,8 @@ This project is completed solely by Ziyang.
 
 ## Structure Overview
 
+*click to zoom in*
+
 ![alt text](https://github.com/Atomoxide/53001-Project/blob/main/structure%20diagram.png)
 
 ### MySQL for:
