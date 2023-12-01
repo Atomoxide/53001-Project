@@ -139,12 +139,32 @@ collection: products
 * **Check out the example json data file linked above to see an actual instance**
 
 
-## Key-stored Database: RedisDB
+## Key-value Database: RedisDB
 
 ### Example Data Bucket and Usage file
 * The example data bucket (filed script) and its explanatory usage text file can be found at: [https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB](https://github.com/Atomoxide/53001-Project/tree/main/key_value_DB)
 
-  
+### Bucket: session:[session_id]
+* named with session_id
+* A hashes bucket to store user session information, including the following information:
+	- session id
+	- user username
+	- cart count (number of items in the cart)
+	- cart_hashes_key: the key to find the corresponding cart:[cart_hashes_key] hashes 
+	- browse_history_key: the key to find the corresponding browse_history:[browse_history_key] list (as a queue)
+	- brose_time_key: the key to find the corresponding browse_time:[browse_time_key] list (as a queue)
+	- search_history_key: the key to find the corresponding search_history:[search_history_key] list (as a queue)
+	- activity_log: store the log text of the session
+
+### Bucket: cart:[cart_hashes_key]
+* named with cart_hashes_key
+* A hashes bucket to store the cart information, including mutiple pairs of cart_item and quantity_item keys
+	- cart_item_X: stores the Xth item's product_variant_id as the value
+	- quantity_item_X: the quantity of Xth item
+* When adding a new item to this hash, server will lookup for cart count in the session bucket and creat a pair of new keys named as cart_item_[cart_count+1] and quantity_item_[cart_count+1]
+
+### 
+
 
 ## Acknowledgement
 This project is completed with the assistance of ChatGPT 3.5:
