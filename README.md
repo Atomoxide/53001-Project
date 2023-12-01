@@ -44,10 +44,10 @@ This project is completed solely by Ziyang.
 * The script contains **MySQL code for all tables and triggers**
 
 ### Table: Product, Product_variant, Product_stock, Stock
-* Product table keep track of each product and its brand, retailer, manufacturer, and category. The product_id is shared with corresponding fields in RedisDB and MongoDB.
+* Product table keeps track of each product and its brand, retailer, manufacturer, and category. The product_id is shared with corresponding fields in RedisDB and MongoDB.
 * product_variant store the variant of a product, such as color, size, etc. A variant_type field stores the description of variant (e.g. "White, XL"). product_variant_id is shared with the corresponding field in MongoDB. If every product must have one product variant. For those products that do not have customer options (color, size, etc.), a default product variant will be created.
 * product_stock is the linker table between product_variant and stock.
-* stock records the stock information of product_variant (instead of product!). A product variant can have multiple stock place, and a stock place can stock multiple product variants.
+* stock records the stock information of product_variant (instead of product!). A product variant can have multiple stock places, and a stock place can stock multiple product variants.
 
 
 ### Table: Category, Brand 
@@ -56,13 +56,13 @@ This project is completed solely by Ziyang.
 
 ### Table: Company
 * Company table stores the information of each partner company. Partner companies include product manufacturer, branding company, retailer, shipper, credit/debit card company.
-* Company inforamtion include email, phone, address, all foreign key referring to the corresponding tables
+* Company information include email, phone, address, all foreign key referring to the corresponding tables
 
 ### Table: Email, Phone_number, Address, City, Country
 * email table stores all email addresses used by the system. Including partner company's emails and user's emails
 * phone_number table stores all phone numbers used by the system. Including partner company's numbers and user's numbers
 * address table stores all addresses used by the system. Including partner company's address, shipping addresses, and billing addresses. city_id field is foreign key referring to city table
-* city table stores the name of cities. It also record whether shipment is available in each city area. country_id refers to country table
+* city table stores the name of cities. It also records whether shipment is available in each city area. country_id refers to country table
 * country table stores the name of countries
 
 
@@ -71,8 +71,8 @@ This project is completed solely by Ziyang.
 
 
 ### Table: customer_order, payment, order_return, shipment
-* customer_order is the order table (named customer_order to avoid conflict in MySQL syntax). It stores the information for each order, including order date, subtotal, shipping cost, processing fee (credit card or any third party payment processing fee), estimated tax, and the total amount. Each order is also associated with an user, a shipment, a payment, and an order status as foreign keys
-* payment table stores each payment with its amount and receive date. It also associates with a billing address and a payment type (Visa, Mastercard, Paypal, etc.) as foreign keys
+* customer_order is the order table (named customer_order to avoid conflict in MySQL syntax). It stores the information for each order, including order date, subtotal, shipping cost, processing fee (credit card or any third-party payment processing fee), estimated tax, and the total amount. Each order is also associated with a user, a shipment, a payment, and an order status as foreign keys
+* payment table stores each payment with its amount and receive date. It also associates with a billing address and a payment type (Visa, Mastercard, PayPal, etc.) as foreign keys
 * order_return is the return table (named order_return to avoid conflict in MySQL syntax). It stores the inforamtion for each return, including the return issue date, refund amount, shipping cost. Each return is also associated with a user, a shipment, a return status, an order id (the order that the returning item comes from), and the product variant of the returning item as foreign keys
 * shipment table stores each shipment with its ship date, expected delivery, ship-to name (customer name to receive the package), last time of update, and tracking number. It also associates with a shipping method (e.g. over-night express, two-day express, ground, etc.), a shipping address, a contact phone number, and a tracking status (e.g. shipped, in transit, delivered) as foreign keys
 
@@ -88,9 +88,9 @@ This project is completed solely by Ziyang.
  
 ### Benefit and reason of using Relational DB
 * All data in the above field are stored in relational database to ensure ACID compliance (Atomicity, Consistency, Isolation, Durability), maintaining data integrity. Because all of these are critical data of the routine operation and they are not frequently accessed, the data integrity is more important than query speed.
-* Due to the importance of data integrety, backup and recovery is easier for relational db.
-* Scalability is another consideration. Relational databases can handle significant amounts of data and can scale effectively as the e-commerce website grows, in which case the amount of users, products, companies, addresses, phones, emails, etc. can expand very quickly.
-* Relational database also provides the most flexible means of data querying. It can provide various type of querying for backend development and data analysis.
+* Due to the importance of data integrity, backup and recovery is easier for relational db.
+* Scalability is another consideration. Relational databases can handle significant amounts of data and can scale effectively as the e-commerce website grows, in which case the number of users, products, companies, addresses, phones, emails, etc. can expand very quickly.
+* Relational database also provides the most flexible means of data querying. It can provide various types of querying for backend development and data analysis.
 
 
 ## Document Database: MongoDB
@@ -99,7 +99,7 @@ This project is completed solely by Ziyang.
 json data file and explanatory text can be found at [https://github.com/Atomoxide/53001-Project/tree/main/Document_DB](https://github.com/Atomoxide/53001-Project/tree/main/Document_DB)
 
 ### Collection: products
-* each different product can have different types of attributes (properties), different number of variants, and many other different type of description on the product website.
+* each different product can have different types of attributes (properties), different number of variants, and many other different types of description on the product website.
 ```
 collection: products
 |__	products
@@ -129,12 +129,12 @@ collection: products
 	|__ "description"
 	|__	"image"
 ```
-* "product_id" should matches the corresponding product_id in the product table of the relational database. This means each product in the relational database has a counterpart here in the document database.
+* "product_id" should match the corresponding product_id in the product table of the relational database. This means each product in the relational database has a counterpart here in the document database.
 * "product_name": name of the product, e.g. "Beats Studio Pro"
 * "first_available": the date of first_available
 * "product_attributes": properties of the product itself, e.g. connection, weight, and battery life for headphones; material, care instruction of woman dresses; and dimensions, weight for vases.
 	- each attribute (property) itself can contain multiple items too. For example, the dimensions property of vases contains length, height, width, and unit (inch) information. See the example for more details.
-* "variant": the variant of a product (e.g. color and size of a dress). Not every product have a variant. For those that have, here stores all kinds of variant with the variant_id matching the product_variant table in the relational database.
+* "variant": the variant of a product (e.g. color and size of a dress). Not every product has a variant. For those that have, here stores all kinds of variant with the variant_id matching the product_variant table in the relational database.
 	- each variant has its own attributes (properties) beside the product attributes, such as the color and the size, which are unique to each variant.
 	- variant_image is a list of image URI for specific variant
 * "description": text description of the product
@@ -142,8 +142,8 @@ collection: products
 * **Check out the example json data file linked above to see an actual instance**
 
 ### Benefit and Reason of using Document DB
-* The attributes of each item in the collection can be different, offerring the flexibility to handle various product from different category
-* Easy to handle structured data, semi-structured data, and unstrucutured data.
+* The attributes of each item in the collection can be different, offering the flexibility to handle various product from different category
+* Easy to handle structured data, semi-structured data, and unstructured data.
 
 ## Key-value Database: RedisDB
 
@@ -168,7 +168,7 @@ collection: products
 * A hashes bucket to store the cart information, including mutiple pairs of cart_item and quantity_item keys
 	- cart_item_X: stores the Xth item's product_variant_id as the value
 	- quantity_item_X: the quantity of Xth item
-* When adding a new item to this hash, server will lookup for cart count in the session bucket and creat a pair of new keys named as cart_item_[cart_count+1] and quantity_item_[cart_count+1]
+* When adding a new item to this hash, server will look up for cart count in the session bucket and creat a pair of new keys named as cart_item_[cart_count+1] and quantity_item_[cart_count+1]
 
 ### Bucket: browse_history:[browse_history_key]
 * named with browse_history_key
@@ -184,7 +184,7 @@ collection: products
 
 ### Benefit and Reason of using Key-value In-memory DB:
 * caching data is very quick, providing extremely fast read/write operations, which can significantly improve the shopping experience.
-* The session information, as well as the cart, browsing history, and search history need to be updated very frequently throughout the shopping experience of the users. Using in-memory database ensures the read/write efficiency and guarantees the smooth shopping experince.
+* The session information, as well as the cart, browsing history, and search history need to be updated very frequently throughout the shopping experience of the users. Using in-memory database ensures the read/write efficiency and guarantees a smooth shopping experience.
 
 
 ## Acknowledgement
@@ -192,7 +192,7 @@ This project is completed with the assistance of ChatGPT 3.5:
 OpenAI. (2023). ChatGPT [Large language model]. https://chat.openai.com
 https://chat.openai.com/share/9d7ca431-b671-40a3-ac79-3dda6f4537e7
 
-ChatGPT listed the pros and cons of different databases and helped assigning each parts in the database of best fit.
+ChatGPT listed the pros and cons of different databases and helped assign each part in the database of best fit.
 
 ## Revision History
 
@@ -222,7 +222,7 @@ size, color, etc., adding a product_variant help reduce the data size and minimi
 * Update Product collection from Document Database
   - add product variant id
   - move general attributes out from variant attributes
-* re-formate structure diagram
+* re-format structure diagram
 
 ### Revision 5 (11-29-2023)
 * Update RedisDB bucket names. Now each bucket name is using colons [:] to specify keys
