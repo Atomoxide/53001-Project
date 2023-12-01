@@ -188,6 +188,8 @@ collection: products
 * caching data is very quick, providing extremely fast read/write operations, which can significantly improve the shopping experience.
 * The session information, as well as the cart, browsing history, and search history need to be updated very frequently throughout the shopping experience of the users. Using in-memory database ensures the read/write efficiency and guarantees a smooth shopping experience.
 
+### Session Management
+Each session is tracked by a session id. The shopping cart and user behavior (browsed item, history, time spent on each item) is associate with a particular session. This design will assign one session for each user. The session will keep track of the user behavior and activity throughout each user login, no matter from what device or platform.
 
 ## Acknowledgement
 This project is completed with the assistance of ChatGPT 3.5:
